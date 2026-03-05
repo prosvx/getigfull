@@ -3,9 +3,9 @@ import { Profile } from "../types";
 
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
-export async function generateProfileData(prompt: string, modelName: string = "gemini-3-flash-preview"): Promise<Profile> {
+export async function generateProfileData(prompt: string): Promise<Profile> {
   const response = await ai.models.generateContent({
-    model: modelName,
+    model: "gemini-3-flash-preview",
     contents: `Gere um perfil de Instagram realista baseado nesta descrição: "${prompt}". 
     Retorne em formato JSON. 
     Certifique-se de gerar exatamente 6 posts. 

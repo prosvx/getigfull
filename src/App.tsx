@@ -6,7 +6,6 @@ import { Loader2, Sparkles, Instagram } from 'lucide-react';
 
 export default function App() {
   const [prompt, setPrompt] = useState('');
-  const [server, setServer] = useState('gemini-3-flash-preview');
   const [loading, setLoading] = useState(false);
   const [progress, setProgress] = useState('');
   const [profile, setProfile] = useState<Profile | null>(null);
@@ -17,7 +16,7 @@ export default function App() {
     setProfile(null);
     try {
       setProgress('Criando persona e dados do perfil...');
-      const profileData = await generateProfileData(prompt, server);
+      const profileData = await generateProfileData(prompt);
       
       setProfile(profileData);
 
@@ -76,19 +75,6 @@ export default function App() {
                 placeholder="Ex: Uma influenciadora de moda sustentável que mora em São Paulo, adora brechós e dá dicas de looks minimalistas."
                 className="w-full h-32 p-4 rounded-xl border border-neutral-300 focus:ring-2 focus:ring-pink-500 focus:border-pink-500 outline-none resize-none"
               />
-              
-              <div className="flex flex-col gap-2">
-                <label className="text-sm font-medium text-neutral-700">Servidor (Modelo de IA)</label>
-                <select
-                  value={server}
-                  onChange={(e) => setServer(e.target.value)}
-                  className="w-full p-3 rounded-xl border border-neutral-300 focus:ring-2 focus:ring-pink-500 outline-none bg-white"
-                >
-                  <option value="gemini-3-flash-preview">Server 1 (Atual - gemini-3)</option>
-                  <option value="gemini-2.5-flash">Server 2 (Alternativo - gemini-2.5)</option>
-                </select>
-              </div>
-
               <button
                 onClick={handleGenerate}
                 disabled={!prompt || loading}
