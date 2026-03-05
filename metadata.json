@@ -1,0 +1,5 @@
+{
+  "name": "AI InstaGen",
+  "description": "Gerador de perfis de Instagram completos com IA. Cria fotos de perfil, biografia, posts com imagens e legendas baseados em uma descrição.",
+  "requestFramePermissions": []
+}
